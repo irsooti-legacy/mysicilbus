@@ -82,9 +82,9 @@ const PullmanTimeTables = () => {
     return (
         <>
             <div>
-                <section style={{ background: '#23125e' }} class="hero is-primary is-bold">
-                    <div class="hero-body">
-                        <div class="container">
+                <section style={{ background: '#23125e' }} className="hero is-primary is-bold">
+                    <div className="hero-body">
+                        <div className="container">
                             <form onChange={onValidate} onSubmit={onSubmit}>
                                 <div
                                     // style={{ marginTop: "3rem", padding: '30px', background: '#23125e', borderRadius: '17px' }} 
@@ -122,7 +122,7 @@ const PullmanTimeTables = () => {
 
             {loader === false ?
                 <div className="container">
-                    <div className="columns">
+                    <div className="columns is-gapless">
                         <div className="column">
                             <PullmanRides rides={rides}></PullmanRides>
                         </div>
