@@ -23,14 +23,12 @@ const PullmanTimeTables = () => {
 
     const onDepartureSelect = ({ currentTarget }) => {
         setDestinationIsLoading(true)
-        setDestinationList([])
+        // setDestinationList([])
         getDestinationList({
             departureId: currentTarget.value
         }).then(r => {
             setDestinationList(r.stops)
             setDestinationIsLoading(false)
-            setIsValidated(false)
-
         })
     }
 
@@ -76,6 +74,10 @@ const PullmanTimeTables = () => {
     }, [setDepartureList]);
 
 
+    useEffect(() => {
+        setIsValidated(false)
+
+    }, [destinationList])
 
     return (
         <>
