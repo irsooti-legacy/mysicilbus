@@ -1,6 +1,5 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
-import { getDepartureList } from './api';
 import PullmanTimeTables from './PullmanTimeTables/PullmanTimeTables';
 
 function App() {

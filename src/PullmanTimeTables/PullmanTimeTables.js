@@ -15,25 +15,22 @@ const PullmanTimeTables = () => {
     const [departureIsLoading, setDepartureIsLoading] = useState(true)
     const [destinationList, setDestinationList] = useState([])
     const [destinationIsLoading, setDestinationIsLoading] = useState(false);
-    const [rideDate, setRideDate] = useState();
     const [rides, setRides] = useState();
+
+    const [isValidated, setIsValidated] = useState(false)
 
     const [loader, setLoader] = useState(false)
 
-
-    const handleRideDates = evt => {
-        console.log(evt)
-        setRideDate(evt[0])
-    }
-
-
     const onDepartureSelect = ({ currentTarget }) => {
         setDestinationIsLoading(true)
+        setDestinationList([])
         getDestinationList({
             departureId: currentTarget.value
         }).then(r => {
             setDestinationList(r.stops)
             setDestinationIsLoading(false)
+            setIsValidated(false)
+
         })
     }
 
@@ -47,22 +44,28 @@ const PullmanTimeTables = () => {
         const dest = evt.currentTarget["destination"].value
         const departureDate = evt.currentTarget["datetime"].value
 
-        if (start && dest && rideDate) {
+
+        setLoader(true)
+        findRides({
+            departureId: start,
+            destinationId: dest,
+            date: departureDate
+        }).then(setRides).finally(() => setLoader(false))
+    }
 
 
 
-            setLoader(true)
-            findRides({
-                departureId: start,
-                destinationId: dest,
-                date: departureDate
-            }).then(setRides).finally(() => setLoader(false))
-        }
+    /**
+     * 
+     * @param {React.FormEvent<HTMLFormElement>} evt 
+     */
+    const onValidate = evt => {
+        const start = evt.currentTarget["start"].value
+        const dest = evt.currentTarget["destination"].value
+        const departureDate = evt.currentTarget["datetime"].value
 
-        else {
-            // lol
-        }
 
+        setIsValidated(start !== "" && dest !== "" && departureDate)
     }
 
     useEffect(() => {
@@ -80,7 +83,7 @@ const PullmanTimeTables = () => {
                 <section style={{ background: '#23125e' }} class="hero is-primary is-bold">
                     <div class="hero-body">
                         <div class="container">
-                            <form onSubmit={onSubmit}>
+                            <form onChange={onValidate} onSubmit={onSubmit}>
                                 <div
                                     // style={{ marginTop: "3rem", padding: '30px', background: '#23125e', borderRadius: '17px' }} 
                                     className="columns is-3">
@@ -90,7 +93,8 @@ const PullmanTimeTables = () => {
                                                 formTarget="DD/MM/YYYY"
                                                 name="datetime"
                                                 className="input is-medium"
-                                                options={{ minDate: new Date(), dateFormat: 'd/m/Y' }} onChange={handleRideDates} />
+                                                options={{ defaultDate: new Date(), minDate: new Date(), dateFormat: 'd/m/Y' }}
+                                            />
                                             <span className="icon is-medium is-left">
                                                 <i className="fas fa-calendar"></i>
                                             </span>
@@ -103,7 +107,7 @@ const PullmanTimeTables = () => {
                                         <PullmanRideSelector defaultValue="Arrivo" name="destination" isLoading={destinationIsLoading} options={destinationList} onChange={() => { }}></PullmanRideSelector>
                                     </div>
                                     <div className="column is-2">
-                                        <input type="submit" value="Cerca" className="button is-medium is-fullwidth is-warning" />
+                                        <input disabled={!isValidated} type="submit" value="Cerca" className="button is-medium is-fullwidth is-warning" />
                                     </div>
                                 </div>
 
