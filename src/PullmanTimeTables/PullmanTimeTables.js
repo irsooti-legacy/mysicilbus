@@ -95,7 +95,7 @@ const PullmanTimeTables = () => {
                                                 formTarget="DD/MM/YYYY"
                                                 name="datetime"
                                                 className="input is-medium"
-                                                options={{ defaultDate: new Date(), minDate: new Date(), dateFormat: 'd/m/Y' }}
+                                                options={{ defaultDate: new Date(), dateFormat: 'd/m/Y' }}
                                             />
                                             <span className="icon is-medium is-left">
                                                 <i className="fas fa-calendar"></i>
