@@ -1,6 +1,17 @@
 import React from 'react'
 
 const PullmanRideSelector = ({ defaultValue, options, onChange, isLoading, name }) => {
+  
+  const onClickHandler = (evt) => {
+    if (window.ga)
+      window.ga('send', {
+        hitType: 'event',
+        eventCategory: 'Stop selection',
+        eventAction: 'select',
+        eventLabel: evt.target.text
+      });
+  }
+  
   return (
 
     <div className="control has-icons-left">
@@ -8,7 +19,7 @@ const PullmanRideSelector = ({ defaultValue, options, onChange, isLoading, name 
         <select name={name} disabled={options.length === 0} onChange={onChange}>
           <option value="">{defaultValue}</option>
           {options.map(m =>
-            <option value={m.id} key={m.id}>{m.label}</option>
+            <option onClick={onClickHandler} value={m.id} key={m.id}>{m.label}</option>
           )}
 
         </select>
