@@ -3,13 +3,14 @@ import React from 'react'
 const PullmanRideSelector = ({ defaultValue, options, onChange, isLoading, name }) => {
   
   const onClickHandler = (evt) => {
-    console.log(evt.target)
+    const id = event.nativeEvent.target.selectedIndex;
+    
     if (window.ga)
       window.ga('send', {
         hitType: 'event',
         eventCategory: 'Stop selection',
         eventAction: 'select',
-        eventLabel: evt.target.text
+        eventLabel: event.nativeEvent.target[id].text
       });
     
     onChange(evt)
