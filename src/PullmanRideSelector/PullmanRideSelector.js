@@ -4,7 +4,7 @@ const PullmanRideSelector = ({ defaultValue, options, onChange, isLoading, name 
   
   const onClickHandler = (evt) => {
     const id = evt.nativeEvent.target.selectedIndex;
-    
+    console.log(window.ga)
     if (window.ga)
       window.ga('send', {
         hitType: 'event',
