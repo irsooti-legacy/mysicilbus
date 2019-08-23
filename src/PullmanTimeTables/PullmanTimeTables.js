@@ -55,7 +55,7 @@ const PullmanTimeTables = () => {
         hitType: 'event',
         eventCategory: 'Ride',
         eventAction: 'find',
-        eventLabel: evt.currentTarget['start'][evt.currentTarget['start'].selectedIndex].text + ' -> ' + evt.currentTarget['destination'][evt.currentTarget['destination'].selectedIndex].text
+        eventLabel: '[' + departureDate + ']' + evt.currentTarget['start'][evt.currentTarget['start'].selectedIndex].text + ' -> ' + evt.currentTarget['destination'][evt.currentTarget['destination'].selectedIndex].text
       });
   };
 
