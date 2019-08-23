@@ -8,7 +8,7 @@ const PullmanRideSelector = ({ defaultValue, options, onChange, isLoading, name 
     if (window.ga)
       window.ga('send', {
         hitType: 'event',
-        eventCategory: 'Stop selection',
+        eventCategory: 'Stop',
         eventAction: 'select',
         eventLabel: evt.nativeEvent.target[id].text
       });
