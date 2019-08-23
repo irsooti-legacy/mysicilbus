@@ -10,7 +10,10 @@ const PullmanRideSelector = ({ defaultValue, options, onChange, isLoading, name 
         hitType: 'event',
         eventCategory: 'Stop',
         eventAction: 'select',
-        eventLabel: evt.nativeEvent.target[id].text
+        eventLabel: evt.nativeEvent.target[id].text,
+        hitCallback : function () {
+          console.log("Event received", evt.nativeEvent.target[id].text);
+        }
       });
     
     onChange(evt)
