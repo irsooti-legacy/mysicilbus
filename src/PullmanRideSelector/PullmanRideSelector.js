@@ -11,16 +11,18 @@ const PullmanRideSelector = ({ defaultValue, options, onChange, isLoading, name 
         eventAction: 'select',
         eventLabel: evt.target.text
       });
+    
+    onChange(evt)
   }
   
   return (
 
     <div className="control has-icons-left">
       <div className={`select is-medium is-fullwidth ${isLoading ? 'is-loading' : ''}`}>
-        <select name={name} disabled={options.length === 0} onChange={onChange}>
+        <select name={name} disabled={options.length === 0} onChange={onClickHandler}>
           <option value="">{defaultValue}</option>
           {options.map(m =>
-            <option onClick={onClickHandler} value={m.id} key={m.id}>{m.label}</option>
+            <option value={m.id} key={m.id}>{m.label}</option>
           )}
 
         </select>
