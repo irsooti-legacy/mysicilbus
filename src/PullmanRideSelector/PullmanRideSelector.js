@@ -3,7 +3,7 @@ import React from 'react'
 const PullmanRideSelector = ({ defaultValue, options, onChange, isLoading, name }) => {
   
   const onClickHandler = (evt) => {
-    console.log(evt)
+    console.log(evt.target)
     if (window.ga)
       window.ga('send', {
         hitType: 'event',
