@@ -6,7 +6,7 @@ import { Italian } from 'flatpickr/dist/l10n/it';
 import flatpickr from 'flatpickr';
 import Flatpickr from 'react-flatpickr';
 import PullmanRides from '../PullmanRides/PullmanRides';
-import ReactGa from 'react-ga'
+import ReactGa from 'react-ga';
 
 flatpickr.localize(Italian);
 
@@ -51,12 +51,12 @@ const PullmanTimeTables = () => {
       .then(setRides)
       .finally(() => setLoader(false));
 
-      ReactGa.ga('send', {
-        hitType: 'event',
-        eventCategory: 'Ride',
-        eventAction: 'find',
-        eventLabel: '[' + departureDate + ']' + evt.currentTarget['start'][evt.currentTarget['start'].selectedIndex].text + ' -> ' + evt.currentTarget['destination'][evt.currentTarget['destination'].selectedIndex].text
-      });
+    ReactGa.ga('send', {
+      hitType: 'event',
+      eventCategory: 'Ride',
+      eventAction: 'find',
+      eventLabel: `[${departureDate}] ${evt.currentTarget['start'][evt.currentTarget['start'].selectedIndex].text} -> ${evt.currentTarget['destination'][evt.currentTarget['destination'].selectedIndex].text}`
+    });
   };
 
   /**
