@@ -44,8 +44,8 @@ const PullmanRide = ({ from, fromTime, destination, destinationTime, eta, price:
                     </div>
                     <div className="column is-2 has-text-right">
                         <button onClick={onClickDetails} className="button is-rounded">
-                            <span class="icon">
-                                <i class="fas fa-info-circle"></i>
+                            <span className="icon">
+                                <i className="fas fa-info-circle"></i>
                             </span>
                             <span>{displayVisibile ? 'Nascondi' : 'Mostra'} percorso</span>
                         </button>

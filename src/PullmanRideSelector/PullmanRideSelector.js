@@ -1,19 +1,16 @@
 import React from 'react'
+import ReactGa from 'react-ga'
 
 const PullmanRideSelector = ({ defaultValue, options, onChange, isLoading, name }) => {
   
   const onClickHandler = (evt) => {
     const id = evt.nativeEvent.target.selectedIndex;
-    console.log(window.ga)
-    if (window.ga)
-      window.ga('send', {
+
+    ReactGa.ga('send', {
         hitType: 'event',
         eventCategory: 'Stop',
-        eventAction: 'select',
-        eventLabel: evt.nativeEvent.target[id].text,
-        hitCallback : function () {
-          console.log("Event received", evt.nativeEvent.target[id].text);
-        }
+        eventAction: 'select [' + evt.currentTarget.name + ']',
+        eventLabel: evt.nativeEvent.target[id].text
       });
     
     onChange(evt)

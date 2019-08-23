@@ -6,7 +6,7 @@ const PullmanRides = (props) => {
         <div style={{ marginTop: '20px' }}>
             {props.rides ? props.rides.error ? <div className="hero is-medium">
                 <div className="hero-body has-text-centered">
-                    <div style={{ fontSize: '4em' }}><i class="fas fa-grin-beam-sweat"></i></div>
+                    <div style={{ fontSize: '4em' }}><i className="fas fa-grin-beam-sweat"></i></div>
                     <div style={{ fontWeight: "bolder", fontSize: "xx-large" }}>Non ho trovato nessuna corsa!</div>
                     <div className="is-size-6"><small>Capita, non prendertela con me.</small></div>
                 </div>
