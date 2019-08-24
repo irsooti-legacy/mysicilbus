@@ -84,6 +84,21 @@ const PullmanTimeTables = () => {
     setIsValidated(false);
   }, [destinationList]);
 
+  const credits = (
+    <aside
+      style={{
+        padding: '3px',
+        paddingTop: '10px'
+      }}
+      className="has-text-centered has-text-weight-light is-size-7"
+    >
+      Fonte orari:{' '}
+      <a href="http://grupposcelfo.ecubing.it/orari.php">
+        grupposcelfo.ecubing.it
+      </a>
+    </aside>
+  );
+
   return (
     <>
       <div style={{ background: '#23125e' }}>
@@ -151,14 +166,18 @@ const PullmanTimeTables = () => {
           <div className="container">
             <div className="columns is-gapless">
               <div className="column">
+                {credits}
                 <PullmanRides rides={rides} />
               </div>
             </div>
           </div>
         ) : (
-          <progress className="progress is-danger is-radiusless" max="100">
-            30%
-          </progress>
+          <>
+            <progress className="progress is-danger is-radiusless" max="100">
+              30%
+            </progress>
+            {credits}
+          </>
         )}
       </div>
       <aside
