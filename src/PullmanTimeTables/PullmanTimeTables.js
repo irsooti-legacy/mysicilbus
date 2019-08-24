@@ -84,9 +84,19 @@ const PullmanTimeTables = () => {
 
   return (
     <>
-      <div>
+      <div style={{ background: '#23125e' }}>
+        <aside
+          style={{
+            padding: '3px',
+            marginBottom: '-25px'
+          }}
+          className="has-text-white has-text-centered has-text-weight-light is-size-7"
+        >
+          Fonte orari:{' '}
+          <a href="http://grupposcelfo.ecubing.it/orari.php">grupposcelfo.ecubing.it</a>
+        </aside>
         <section
-          style={{ background: '#23125e' }}
+          style={{ background: 'inherit' }}
           className="hero is-primary is-bold"
         >
           <div className="hero-body">
@@ -144,20 +154,21 @@ const PullmanTimeTables = () => {
           </div>
         </section>
       </div>
-
-      {loader === false ? (
-        <div className="container">
-          <div className="columns is-gapless">
-            <div className="column">
-              <PullmanRides rides={rides} />
+      <div>
+        {loader === false ? (
+          <div className="container">
+            <div className="columns is-gapless">
+              <div className="column">
+                <PullmanRides rides={rides} />
+              </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <progress className="progress is-danger is-radiusless" max="100">
-          30%
-        </progress>
-      )}
+        ) : (
+          <progress className="progress is-danger is-radiusless" max="100">
+            30%
+          </progress>
+        )}
+      </div>
     </>
   );
 };
