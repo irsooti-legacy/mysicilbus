@@ -146,17 +146,6 @@ const PullmanTimeTables = () => {
           </div>
         </section>
       </div>
-      <aside
-        style={{
-          padding: '3px'
-        }}
-        className="has-text-centered has-text-weight-light is-size-7"
-      >
-        Fonte orari:{' '}
-        <a href="http://grupposcelfo.ecubing.it/orari.php">
-          grupposcelfo.ecubing.it
-        </a>
-      </aside>
       <div>
         {loader === false ? (
           <div className="container">
@@ -172,6 +161,17 @@ const PullmanTimeTables = () => {
           </progress>
         )}
       </div>
+      <aside
+        style={{
+          padding: '3px'
+        }}
+        className="has-text-centered has-text-weight-light is-size-7"
+      >
+        Fonte orari:{' '}
+        <a href="http://grupposcelfo.ecubing.it/orari.php">
+          grupposcelfo.ecubing.it
+        </a>
+      </aside>
     </>
   );
 };
