@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getDepartureList, getDestinationList, findRides } from '../api';
 import PullmanRideSelector from '../PullmanRideSelector/PullmanRideSelector';
 import 'flatpickr/dist/themes/airbnb.css';
@@ -18,12 +18,14 @@ const PullmanTimeTables = () => {
   const [rides, setRides] = useState();
 
   const [isValidated, setIsValidated] = useState(false);
+  const formRef = useRef();
 
   const [loader, setLoader] = useState(false);
 
   const onDepartureSelect = ({ currentTarget }) => {
     setDestinationIsLoading(true);
-    // setDestinationList([])
+    // setDestinationList([]);
+    formRef.current['destination'].value = '';
     getDestinationList({
       departureId: currentTarget.value
     }).then(r => {
@@ -85,23 +87,13 @@ const PullmanTimeTables = () => {
   return (
     <>
       <div style={{ background: '#23125e' }}>
-        <aside
-          style={{
-            padding: '3px',
-            marginBottom: '-25px'
-          }}
-          className="has-text-white has-text-centered has-text-weight-light is-size-7"
-        >
-          Fonte orari:{' '}
-          <a href="http://grupposcelfo.ecubing.it/orari.php">grupposcelfo.ecubing.it</a>
-        </aside>
         <section
           style={{ background: 'inherit' }}
           className="hero is-primary is-bold"
         >
           <div className="hero-body">
             <div className="container">
-              <form onChange={onValidate} onSubmit={onSubmit}>
+              <form ref={formRef} onChange={onValidate} onSubmit={onSubmit}>
                 <div
                   // style={{ marginTop: "3rem", padding: '30px', background: '#23125e', borderRadius: '17px' }}
                   className="columns is-3"
@@ -154,6 +146,17 @@ const PullmanTimeTables = () => {
           </div>
         </section>
       </div>
+      <aside
+        style={{
+          padding: '3px'
+        }}
+        className="has-text-centered has-text-weight-light is-size-7"
+      >
+        Fonte orari:{' '}
+        <a href="http://grupposcelfo.ecubing.it/orari.php">
+          grupposcelfo.ecubing.it
+        </a>
+      </aside>
       <div>
         {loader === false ? (
           <div className="container">
