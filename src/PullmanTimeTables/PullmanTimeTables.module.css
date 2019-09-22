@@ -3,7 +3,7 @@
 }
 
 .logoWrapper {
-  position: absolute;
+  position: relative;
   display: flex;
   margin-top: -60px;
   width: 100%;
