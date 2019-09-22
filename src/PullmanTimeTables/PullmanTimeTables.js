@@ -7,7 +7,8 @@ import flatpickr from 'flatpickr';
 import Flatpickr from 'react-flatpickr';
 import PullmanRides from '../PullmanRides/PullmanRides';
 import ReactGa from 'react-ga';
-
+import cssModule from './PullmanTimeTables.module.css';
+import logo from '../assets/mysicilbus.png';
 flatpickr.localize(Italian);
 
 const PullmanTimeTables = () => {
@@ -88,7 +89,7 @@ const PullmanTimeTables = () => {
     <aside
       style={{
         padding: '3px',
-        paddingTop: '10px'
+        paddingTop: '100px'
       }}
       className="has-text-centered has-text-weight-light is-size-7"
     >
@@ -101,7 +102,7 @@ const PullmanTimeTables = () => {
 
   return (
     <>
-      <div style={{ background: '#23125e' }}>
+      <div style={{ background: '#79b2e5', paddingBottom: '40px' }}>
         <section
           style={{ background: 'inherit' }}
           className="hero is-primary is-bold"
@@ -162,6 +163,9 @@ const PullmanTimeTables = () => {
         </section>
       </div>
       <div>
+        <div className={cssModule.logoWrapper}>
+          <img src={logo} alt="My Sicilbus logo"></img>
+        </div>
         {loader === false ? (
           <div className="container">
             <div className="columns is-gapless">

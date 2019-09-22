@@ -1,0 +1,18 @@
+.App-link {
+  color: #61dafb;
+}
+
+.logoWrapper {
+  position: absolute;
+  display: flex;
+  margin-top: -60px;
+  width: 100%;
+  text-align: center;
+  /* rgb(85, 155, 217) */
+}
+
+.logoWrapper img {
+  max-width: 150px;
+  margin: auto;
+  border-radius: 50%;
+}
