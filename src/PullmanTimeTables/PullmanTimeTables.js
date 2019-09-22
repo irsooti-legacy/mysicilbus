@@ -20,6 +20,10 @@ const PullmanTimeTables = () => {
 
   const [isValidated, setIsValidated] = useState(false);
   const formRef = useRef();
+  /**
+   *
+   */
+  const resultsRef = useRef();
 
   const [loader, setLoader] = useState(false);
 
@@ -52,7 +56,10 @@ const PullmanTimeTables = () => {
       date: departureDate
     })
       .then(setRides)
-      .finally(() => setLoader(false));
+      .finally(() => {
+        setLoader(false);
+        resultsRef.current.scrollIntoView({ behavior: 'smooth' });
+      });
 
     ReactGa.ga('send', {
       hitType: 'event',
@@ -162,7 +169,7 @@ const PullmanTimeTables = () => {
           </div>
         </section>
       </div>
-      <div>
+      <div ref={resultsRef} style={{ position: 'relative' }}>
         <div className={cssModule.logoWrapper}>
           <img src={logo} alt="My Sicilbus logo"></img>
         </div>
